@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const medSchema = mongoose.Schema(
   {
     image: { type: String },
-    discount: { type: String, required: true },
+    discount: { type: String },
     name: { type: String },
     subcat2: { type: String },
     subcategory: { type: String },
