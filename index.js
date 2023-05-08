@@ -20,7 +20,7 @@ app.use(express.json());
 //   res.status(200).send("Home page");
 // });
 
-app.use("/", medRouter);
+app.use("/products", medRouter);
 
 //By neeraj ==>
 app.use("/users", userRouter);
@@ -30,8 +30,9 @@ app.use("/order", auth, OrderRouter);
 app.listen(process.env.port, async () => {
   try {
     await connection;
-    console.log("Port 8080 is running");
+    console.log("Mongo DB Connected");
   } catch (err) {
     console.log("cannot connect to the db");
   }
+  console.log("Port 8080 is running");
 });
