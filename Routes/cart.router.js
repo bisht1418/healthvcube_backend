@@ -15,7 +15,7 @@ CartRouter.post("/add", async (req, res) => {
     //   userId,
     //   userName,
     // });
-    const product = new CartModel(req.body)
+    const product = new CartModel(req.body);
     await product.save();
     res.status(201).send(product);
   } catch (err) {
@@ -42,6 +42,7 @@ CartRouter.delete("/:productId", async (req, res) => {
 // ""delete all the product after purchase from the cart""
 CartRouter.post("/delete/all", async (req, res) => {
   try {
+    console.log(req.body);
     const { userId } = req.body;
     const deletedProducts = await CartModel.deleteMany({ userId });
     if (!deletedProducts.deletedCount) {

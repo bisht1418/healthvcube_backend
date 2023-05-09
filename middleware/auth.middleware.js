@@ -8,13 +8,15 @@ const auth = (req, res, next) => {
       if (decoded) {
         req.body.userId = decoded.userId;
         req.body.userName = decoded.userName;
+        res.locals.userId = decoded.userId;
+        res.locals.userName = decoded.userName;
         next();
       }
     } catch (error) {
-      res.send(error);
+      res.status(401).send({ error: "Invalid token" });
     }
   } else {
-    res.send({ msg: "Please Login" });
+    res.status(401).send({ error: "Please login" });
   }
 };
 
