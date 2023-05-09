@@ -49,7 +49,12 @@ userRouter.post("/login", async (req, res) => {
           );
           res
             .status(200)
-            .json({ message: "Login Sucessful", userId: user._id, token });
+            .json({
+              message: "Login Sucessful",
+              userId: user._id,
+              token,
+              userName: user.username,
+            });
         } else {
           res.status(401).json({ message: "Wrong Credentials" });
         }
